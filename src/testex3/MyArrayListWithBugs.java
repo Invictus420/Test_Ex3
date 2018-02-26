@@ -24,6 +24,8 @@ public class MyArrayListWithBugs {
         if(list.length <= nextFree){
             list= getLongerList();
         }
+        list[nextFree] = o;
+        nextFree++;
     }
     
     public int size(){
@@ -31,7 +33,7 @@ public class MyArrayListWithBugs {
     }
     
     public Object get(int index){
-        if(index <= 0||nextFree<index){
+        if(index < 0||nextFree<index){
             throw new IndexOutOfBoundsException("Error (get): invalid: " + index);
         }
         return list[index];
@@ -48,7 +50,7 @@ public class MyArrayListWithBugs {
         for(int i = nextFree-1; i>index; i--){
             list[i]=list[i-1];
         }
-        
+        nextFree++;
         list[index]=o;
     }
     
@@ -72,4 +74,6 @@ public class MyArrayListWithBugs {
         }
         return tempList;
     }
+    
+    
 }

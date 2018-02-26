@@ -30,7 +30,7 @@ public class BugsTest {
     public void getTest(){
         MyArrayListWithBugs bugs = new MyArrayListWithBugs();
         bugs.add("getTest");
-        Assert.assertEquals(1, bugs.get(1));
+        Assert.assertEquals("getTest", bugs.get(0));
     }
     
     @Test (expected = IndexOutOfBoundsException.class)
@@ -49,7 +49,7 @@ public class BugsTest {
     @Test
     public void removeTest(){
         MyArrayListWithBugs bugs = new MyArrayListWithBugs();
-        bugs.add("removeTest");
+        bugs.add(0, "removeTest");
         Assert.assertEquals("removeTest", bugs.remove(0));
     }
     
@@ -60,6 +60,23 @@ public class BugsTest {
         
     }
     
+    @Test
+    public void extraTest1(){
+        MyArrayListWithBugs bugs = new MyArrayListWithBugs();
+        bugs.add("test1");
+        bugs.add("test2");
+        bugs.add("test3");
+        bugs.add("test4");
+        Assert.assertEquals(4, bugs.size());
+        
+    }
+    
+    @Test
+    public void extraTest2(){
+        MyArrayListWithBugs bugs = new MyArrayListWithBugs();
+        bugs.add(0, "test");
+        Assert.assertEquals("test", bugs.get(0));
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
